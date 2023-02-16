@@ -1,0 +1,163 @@
+<div class="container-fluid" style="background-color: #eee;">
+  <!-- Ads -->
+  <div class="row">
+    <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+          aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+          aria-label="Slide 7"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./assets/slide_1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_3.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_4.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_5.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_6.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/slide_7.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{'Previous'|translate}}</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{'Next'|translate}}</span>
+      </button>
+    </div>
+  </div>
+  <!-- Product -->
+  <div class="row my-4">
+    <div class="col-sm-2" *ngFor="let brand of brandList">
+      <div class="card mt-2" style="border: 1px solid rgb(185, 183, 182);">
+        <a class="btn" style="background-color: white;" (click)="openBrandDetails(brand.id)">
+          <p class="fw-bolder my-2 d-flex justify-content-around text-dark">{{brand.name|translate}}</p>
+        </a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <hr class="hr bg-black" >
+  <div class="row">
+    <h2><b>{{'Deals'|translate}}</b> {{'of The Day'|translate}}</h2>
+    <div class="row">
+      <div class="col-sm-4  col-xl-4 col-md-6 my-4"  *ngFor="let prod of productOfferList" >
+        <div class="card text-black">
+          <div class="d-flex justify-content-between p-3">
+            <p class="h5 mx-auto mb-0">{{prod.name|translate}}</p>
+          </div>
+          <div class="row mx-auto d-flex justify-content-around">
+            <a href="#">
+            
+              <img class="w-55 mx-auto" src="http://Amazon-Dashboard.somee.com/wwwroot/Images/{{prod.productImages[0]?.path}}" alt="Product 1">
+               <!-- <img class="w-55 mx-auto" src="http://localhost:5294/wwwroot/Images/{{prod.productImages[0]?.path}}" alt="Product 1">  -->
+
+              <!-- <img class="w-55 mx-auto" src="./assets/Images/{{prod.productImages[0].path}}" alt="Product 1"> -->
+            </a>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <p class="small"><a href="#!" class="text-muted">{{'old price'|translate}}</a></p>
+                <p class="small text-danger"><s>$ {{prod.price}}</s></p>
+              </div>
+              <div class="d-flex justify-content-between mb-3">
+                <h6 class="mb-0">{{'After discount'|translate}}</h6>
+                <h6 class="text-dark mb-0">$ {{prod.discountPrice}}</h6>
+              </div>
+              <a  (click)="openPrdDetails(prod.id)" class="text-light  btn btn-primary mt-3 mb-2">{{'Show Details'|translate}}</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <hr class="hr">
+  <!-- Best Seller product -->
+  <div class="row">
+    <h2>{{'Best'|translate}} <b>{{'Seller'|translate}}</b></h2>
+    <div class="row">
+      <div class="col-sm-4  col-xl-4 col-md-6 my-4" *ngFor="let prod of productBestSellerList">  
+        <!-- <div *ngIf="prod.quantity > 0" > -->
+        <div class="card text-black">
+  
+          <!-- <img class="w-55 mx-auto" src="./assets/Images/{{prod.productImages[0].path}}" alt="Product 1"> -->
+          <img class="w-55 mx-auto" src="http://Amazon-Dashboard.somee.com/wwwroot/Images/{{prod.productImages[0]?.path}}" alt="Product 1">
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-2">
+            <p class="lead mb-0">{{prod.name}}</p>
+            <h5 class="text-dark mb-0">${{prod.price}}</h5>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <p class="text-muted mb-0">{{'Available'|translate}}: <span class="fw-bold">{{prod.quantity}}</span></p>
+
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+          <a class="btn btn-primary ms-1 text-light"(click)="openPrdDetails(prod.id)">{{'Show Details'|translate}}</a>
+       
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- </div> -->
+
+  <hr class="hr">
+  <div class="row">
+    <!-- Best Most Popular -->
+    <h2>{{'Most'|translate}} <b>{{'Popular'|translate}}</b></h2>
+    <div class="row">
+        <div class="col-sm-4  col-xl-4 col-md-6 my-4"  *ngFor="let prd of productMostPopularList">
+          <!-- <div *ngIf="prd.quantity > 0" > -->
+          <div class="card text-black">
+            <img class="w-55 mx-auto" src="http://Amazon-Dashboard.somee.com/wwwroot/Images/{{prd.productImages[0]?.path}}" alt="Product 1">
+            <div class="card-body">
+            <div class="d-flex justify-content-between mb-2">
+              <p class="lead mb-0">{{prd.name|translate}}</p>
+              <h5 class="text-dark mb-0">${{prd.price}}</h5>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <p class="text-muted mb-0">{{'Available'|translate}}: <span class="fw-bold">{{prd.quantity}}</span></p>
+
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+            <a class="btn btn-primary ms-1 text-light"(click)="openPrdDetails(prd.id)">{{'Show Details'|translate}}</a>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

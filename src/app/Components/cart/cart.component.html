@@ -1,0 +1,63 @@
+
+
+      <div *ngIf="cartProducts.length == 0">
+    
+        <div style="height: 400px;">
+          <div class="alert alert-danger mt-5 mx-5" style="text-align:center" role="alert" >
+            <i class="bi bi-exclamation-triangle"></i>
+            <span> {{'No Products in Your Carte  ^_^'|translate}} </span>
+        </div>
+        </div>
+      </div>
+      <ng-container class="uk-container panier" *ngFor="let prd of cartProducts let i = index">
+        <div class="container mt-5 mb-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="images p-3">
+                                                <!-- <img class="w-55 mx-auto" src="http://Amazon-Dashboard.somee.com/wwwroot/Images/{{Prod.productImages[0].path}}" alt="Product 1"> -->
+
+                                    <div class="text-center p-4"> <img id="main-image"  src="http://Amazon-Dashboard.somee.com/wwwroot/Images/{{prd.product.productImages[0].path}}" width="250" /> </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product p-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            
+                                        </div>
+                                         <button class="btn btn-danger btn-sm btn-square" (click)="deleteItem(prd.product.id)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" >
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                          </svg>
+                                        </button>
+                                        </div>
+                                    
+                    
+                                        <h5 class="text-uppercase">{{prd.product.name|translate}}</h5>
+                                        
+                                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">${{prd.product.discountPrice}}</span>
+                                        </div>
+                                        <p class="about">{{prd.product.description|translate}}</p>
+
+                                    </div>
+                                    <div>
+                                       <button class="btn btn-success btn-lg"  (click)="opencheckDetails(prd.product.id)">{{'Payment'|translate}}
+                                        </button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+   
+          </ng-container>
+
+          

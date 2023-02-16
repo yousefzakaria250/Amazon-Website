@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xl-2">
+     <h5 class="text-center mt-3">{{'SHOP BY'|translate}} </h5>
+     <div class="row">
+     </div>
+     <div class="row">
+       <div class=" mt-3 h6"><b>{{'Brand:'|translate}}</b>
+         <select class="form-control"[(ngModel)]="selectedBrandID">
+           <option value="0">{{'All'|translate}}</option>
+           <option *ngFor="let brand of brandList" [value]="brand.id">{{brand.name|translate}}</option>
+         </select>
+      
+       </div>
+     </div>
+
+    </div>
+    <div class="col-xl-10">
+     <app-product [receivedBrandID]="selectedBrandID" [receivedCatName]="currentcatName" [receivedCatId]="catID"></app-product>
+ </div>
+ </div>
+ 

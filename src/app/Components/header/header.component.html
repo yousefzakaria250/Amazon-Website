@@ -1,0 +1,85 @@
+<header>
+  <div class="container-fluid" style="background-color: #131921;">
+    <div class="row p-2">
+      <div class="col-md-2  mb-3 mb-md-0">
+        <a href="#!" class="h-100 d-inline-block text-light">
+          <img src="./assets/amazonlogo.png" class="w-75" />
+          <span class="text-light">.eg</span>
+        </a>
+      </div>      
+     
+      <div class="col-md-5">
+
+        <form class="d-flex input-group w-auto my-auto mb-3 mb-md-0" >
+
+          <input autocomplete="off" #temp type="search" name="term" (keyup.enter)="Search($event)" class="form-control rounded box " placeholder="{{'Search'|translate}}" />
+          <a (click)="SearchBtn(temp.value)" style=" background: rgb(247, 155, 80);" class=" input-group-text border-0 d-lg-flex">
+          
+           <i class="fas fa-search text-white mx-auto" ></i>
+         
+          </a>
+          
+          <div class="col-md-1" [hidden]="isuserlogged" >
+            <button class="btn btn-light" [routerLink]="['/login']">{{'Login'|translate}}</button>
+            </div>
+          <div class="col-md-1 text-light" [hidden]="!isuserlogged">
+    
+                <div class="btn-group text-sm text-wrap">
+                  <div  class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{'Hi..'|translate}} {{getuser()}}
+                  </div>
+                  <ul class="dropdown-menu">
+                    <a class="btn btn-light d-flex input-group w-auto my-auto mb-3 mb-md-0" (click)="logout()">{{'logout'|translate}}</a>
+                  </ul>
+                </div>
+          </div>
+         
+        </form>
+      </div>
+      <div class="col-md-4 d-flex justify-content-md-around align-items-center">
+        <div class="d-flex">
+
+          <span class="form-inline">
+            <select class="form-control mx-3" #selectedlang (change)="switchLang(selectedlang.value)">
+              <option *ngFor="let language of translate.getLangs()" [value]="language" [selected]="language === translate.currentLang">
+                {{language}} 
+              </option>
+            </select>
+          </span>
+         
+         
+          <!-- Cart -->
+          <a class="btn" href="/Cart">
+            <span><i class="fas fa-shopping-cart text-light">{{'cart'|translate}}</i></span>
+
+
+            <span class="badge rounded-pill badge-notification bg-danger">{{totalItem}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <nav class="navbar navbar-expand-lg" style="background-color: #232f3e;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+              <a type="button" class="nav-link text-light" id="modal_view_left" 
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-bars"></i>
+                <span> {{'All'|translate}}</span>
+              </a>
+          </li>
+          <li class="nav-item" *ngFor="let c of categoryList">
+            <a class="nav-link text-light" (click)="openCatDetails(c.id)" routerLinkActive="active">{{c.name|translate}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
